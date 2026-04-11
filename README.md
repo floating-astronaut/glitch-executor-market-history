@@ -1,41 +1,31 @@
 # Glitch Executor Market History
 
-Private raw market-history repository for the Glitch Executor ecosystem.
+Private historical market-data repository for the Glitch Executor ecosystem.
 
-This repo preserves external historical market datasets that are useful for research, backtesting, and future data-engineering work, but do not belong in the public code repos.
+This repository preserves raw external time-series datasets used for research, backtesting, data-engineering, and archive retention. It exists so large historical market files can stay isolated from the public code repos and from the model/data repos that hold Glitch-specific training assets.
 
-## Purpose
+## Repo Role
 
-This repository exists to preserve:
+This repo is the market-history archive. It is intended to preserve:
 
-- raw XAU historical time-series files
-- raw EURUSD M1 historical archives
-- BTC historical market datasets
-- supporting oil reference price files
-
-## Privacy Rule
-
-This repository should remain private.
-
-## Current Payload
-
-- Approximate size: `0.94 GB`
-- Total files: `46`
+- raw XAU historical data
+- EURUSD M1 archives
+- BTC history snapshots
+- supporting oil or macro reference price files
 
 ## Structure
 
-```text
-glitch-executor-market-history/
-|-- raw/
-|   |-- gold/
-|   |-- eurusd_m1/
-|   |-- btc/
-|   `-- oil/
-`-- docs/
-```
+- `raw/` for source market-history files grouped by asset family
+- `docs/` for inventory, handling notes, and archive decisions
+
+## Privacy
+
+This repository should remain private.
+
+Even though the files are market data rather than credentials, this repo is still part of the private Glitch research estate and should not be mirrored casually.
 
 ## Notes
 
-- The oversized `XAU_1m_data.csv` source file was split into `raw/gold/XAU_1m_parts/` to stay within normal GitHub file-size limits without relying on Git LFS.
-- The `EURUSD` archive preserves only the CSV time-series files, not the adjacent `.txt` duplicates.
-- Account-specific CSV files from the old archive were intentionally excluded because they are not raw market-history assets.
+- oversized source files may be split into smaller archive parts to stay inside normal GitHub limits
+- account-specific exports do not belong here unless they are explicitly sanitized and research-relevant
+- this repo should contain raw reference data, not strategy code or model artifacts
